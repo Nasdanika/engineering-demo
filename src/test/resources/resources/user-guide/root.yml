@@ -1,0 +1,4 @@
+engineering-document:
+  name: User Guide
+  content:
+    exec-resource: content.md

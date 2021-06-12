@@ -1,0 +1,270 @@
+engineering-organization:
+   name: Nasdanika Engineering Demo
+   path: demo   
+   discussion:
+     - name: New and noteworthy
+       path: new
+       description: New things.
+       topics:
+         - name: New cool stuff!
+           author: demo:engineers/pv            
+           markdown-description: So new and so cool!
+           date: 2021/6/10                                   
+           messages:
+             - name: Doesn't work
+               markdown-description: Sucks big time.
+               author: demo:engineers/pv
+               date: 2021/6/11            
+   topics:
+     - name: When XYZ?
+       author: demo:engineers/pv            
+       markdown-description: "``When``???"
+       date: 2021/6/10                                   
+       messages:
+         - name: When...
+           markdown-description: So, when?
+           author: demo:engineers/pv
+           date: 2021/6/11            
+   appearance:
+     features:
+       issue-statuses:
+         roles: element-actions/context                       
+   issue-categories:
+      - path: test
+        name: Test Category
+        description: Blah
+        weight: 1
+   issue-statuses:
+      - path: open
+        name: Open
+      - path: in-progress
+        name: In Progress
+      - path: done
+        name: Done
+        done: true
+   increments:
+      - path: 2021
+        name: 2021
+        start: 1/1/2021
+        end: 12/31/2021
+        objectives:
+          - name: Test objective for 2021
+            path: to-2021
+            key-results:
+              - name: Key result 1 for 2021
+                path: kr-1                
+        children:
+           - path: q2
+             name: Q2
+             start: 4/1/2021
+             end: 6/30/2021
+             children:
+               - path: jun
+                 name: Jun
+                 start: 6/1/2021
+                 end: 6/30/2021 
+           - path: q3
+             name: Q3
+             start: 7/1/2021
+             end: 9/30/2021
+             children:
+               - path: jul
+                 name: Jul
+                 start: 7/1/2021
+                 end: 7/31/2021 
+               - path: aug
+                 name: Aug
+                 start: 8/1/2021
+                 end: 8/31/2021 
+               - path: sep
+                 name: Sep
+                 start: 9/1/2021
+                 end: 9/30/2021 
+           - path: q4
+             name: Q4
+             start: 10/1/2021
+             end: 12/31/2021
+             children:
+               - path: oct
+                 name: Oct
+                 start: 10/1/2021
+                 end: 12/31/2021 
+               - path: nov
+                 name: Nov
+                 start: 11/1/2021
+                 end: 11/30/2021 
+               - path: dec
+                 name: Dec
+                 start: 12/1/2021
+                 end: 12/31/2021 
+      - path: 2022
+        name: 2022
+   engineers:
+     - engineering-engineer:
+         name: Pavel
+         path: pv    
+         objectives:
+           - name: Pavel's objective for 2021
+             aligns: demo:increments/2021/objectives/to-2021/key-results/kr-1
+             endeavor: demo:increments/2021             
+             children: 
+               - name: Pavel's objective for Q2 2021
+                 endeavor: demo:increments/2021/children/q2                                                  
+         capacity:
+           - endeavor: demo:increments/2021/children/q2/children/jun
+             effort: 50
+   principles:
+     - name: Low tech
+       path: low-tech
+       markdown-description: Use easily available technology to drive wide adoption.
+       appearance:
+         roles: navigation
+         # icon: fas fa-user
+         features:
+           children:
+             # icon: far fa-user
+             roles: element-actions/content-right 
+       children:
+         - name: YAML 
+           path: yaml
+           markdown-description: Use YAML for structured data.
+         - name: Markdown 
+           path: markdown
+           markdown-description: Use Markdown for descriptions.
+   personas: 
+     - name: Innovator
+       path: innovator
+       markdown-description: A person with many ideas who wants them to be quickly prototyped and published.
+       goals:
+         - name: Publish
+           path: publish
+           markdown-description: Ability to quickly publish ideas/prototypes with minimal overhead.
+       representatives:
+         - demo:engineers/pv                   
+   modules:
+     - engineering-product:
+         name: Test
+         path: test
+         releases: 
+           - name: 1.0
+             path: 1/0  
+             increment: demo:increments/2021/children/q2/children/jun  
+             end: 2021/6/25                   
+         features: 
+           - name: My feature
+             path: my-feature  
+             releases: demo:modules/test/releases/1/0    
+             assignee: demo:engineers/pv                              
+         issues:
+           - name: Issue 1         
+             effort: 10
+             aligns: 
+               - demo:personas/innovator/goals/publish
+               - demo:principles/low-tech/children/yaml                            
+           - name: Issue 2         
+             effort: 20
+             releases: demo:modules/test/releases/1/0             
+             notes:
+               - date: 2021/5/28
+                 effort: 5
+           - name: Issue 3         
+             effort: 10
+             contributes-to: demo:modules/test/features/my-feature
+             assignee: demo:engineers/pv
+             aligns: demo:increments/2021/objectives/to-2021/key-results/kr-1                              
+             children:
+               - name: Issue 3.1         
+                 effort: 7
+                 start: 2021/5/15                                   
+                 end: 2021/5/30                                   
+               - name: Issue 3.2         
+                 effort: 7
+                 start: 2021/5/25                                   
+                 end: 2021/6/10                                   
+             notes:
+               - date: 2021/5/28
+                 effort: 3
+         discussion:
+           - name: New and noteworthy
+             path: new
+             description: New things.
+             topics:
+               - name: New cool stuff!
+                 author: demo:engineers/pv            
+                 markdown-description: So new and so cool!
+                 date: 2021/6/10                                   
+                 messages:
+                   - name: Doesn't work
+                     markdown-description: Sucks big time.
+                     author: demo:engineers/pv
+                     date: 2021/6/11            
+         topics:
+           - name: When XYZ?
+             author: demo:engineers/pv            
+             markdown-description: "``When``???"
+             date: 2021/6/10                                   
+             messages:
+               - name: When...
+                 markdown-description: So, when?
+                 author: demo:engineers/pv
+                 date: 2021/6/11            
+         allocations:
+           - engineer: demo:engineers/pv
+             endeavor: demo:modules/test/features/my-feature
+             effort: 5  
+             category: demo:issue-categories/test
+         resources:
+           - engineering-named-element-reference: 
+               target: demo:engineers/pv
+               description: The guy.
+           - engineering-link: 
+               target: https://www.eclipse.org/sirius/sirius-web.html
+               name: Sirius Web
+               description: Diagramming in the browser    
+           - engineering-document: 
+               name: Test document
+               path: test-document
+               table-of-contents: true
+               markdown-description: Document ``description``...
+               markdown-content:
+                exec-resource: lorem-ipsum.md 
+               sections: 
+                 - name: Section 1
+                   path: section-1
+                   owners: demo:engineers/pv
+                   markdown-content: 
+                     exec-resource: lorem-ipsum.md 
+                   discussion:
+                     - name: Found a typo
+                       path: typo 
+                       description: Some rant about a typo and how people are not well educated.
+                   issues:
+                     - name: Section-level issue
+                       path: section-level-issue
+                       description: Test.         
+                 - name: Section 2
+                   path: section-2
+                   markdown-content: 
+                     exec-resource: lorem-ipsum.md 
+                 - name: Section 3
+                   path: section-3
+                   markdown-content: 
+                     exec-resource: lorem-ipsum.md
+                   sections: 
+                    - name: Section 3.1
+                      path: section-3-1
+                      markdown-content: 
+                        exec-resource: lorem-ipsum.md 
+                    - name: Section 3.2
+                      path: section-3-2
+                      markdown-content: 
+                        exec-resource: lorem-ipsum.md 
+                    - name: Section 3.3
+                      path: section-3-3
+                      markdown-content: 
+                        exec-resource: lorem-ipsum.md 
+                 - name: Section 4
+                   path: section-4
+                   markdown-content: 
+                     exec-resource: lorem-ipsum.md 
+                       

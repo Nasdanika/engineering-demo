@@ -1,1 +1,1 @@
-# engineering-demo
+Demo project for [Nasdanika Engineering](https://docs.nasdanika.org/engineering/). See [the site](https://docs.nasdanika.org/engineering-demo/).
