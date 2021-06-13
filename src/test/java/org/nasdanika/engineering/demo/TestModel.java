@@ -1,8 +1,11 @@
 package org.nasdanika.engineering.demo;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.eclipse.emf.common.util.URI;
@@ -14,6 +17,7 @@ import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.MutableContext;
+import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Status;
@@ -35,6 +39,8 @@ import org.nasdanika.html.model.app.AppPackage;
  *
  */
 public class TestModel {
+	
+	private static final String TEST_RESOURCES_PREFIX = "engineering-demo/target/test-classes/";
 	
 	@Test
 	public void testGenerateDemoSite() throws Exception {
@@ -69,11 +75,7 @@ public class TestModel {
 			
 //			@Override
 //			protected List<URL> getAppearanceLocations() {
-//				try {
-//					return Collections.singletonList(new File("model/test-appearance.yml").toURI().toURL());
-//				} catch (MalformedURLException e) {
-//					throw new NasdanikaException(e);
-//				}
+//				return Collections.singletonList(getClass().getResource("/appearance.yml"));
 //			}
 			
 		};
@@ -93,16 +95,24 @@ public class TestModel {
 					File locationFile = new File(new java.net.URI(marker.getLocation()));
 					URI locationURI = URI.createFileURI(locationFile.getCanonicalPath());
 					URI relativeLocationURI = locationURI.deresolve(uri, true, true, true); 
+					String relativeLocationString = relativeLocationURI.toString();
 					return new Link() {
 	
 						@Override
 						public String getLocation() {
+							if (relativeLocationString.startsWith(TEST_RESOURCES_PREFIX)) {
+								return "https://github.com/Nasdanika/engineering-demo/blob/main/src/test/resources/" + relativeLocationString.substring(TEST_RESOURCES_PREFIX.length()) + "#L" + marker.getLine();
+							}
 							return marker.getLocation();
 						}
 						
 						@Override
-						public String getText() {							
-							return relativeLocationURI.toString() + " " + marker.getLine() + ":" + marker.getColumn();
+						public String getText() {
+							String path = relativeLocationString;
+							if (path.startsWith(TEST_RESOURCES_PREFIX)) {
+								path = "src/test/resources/" + relativeLocationString.substring(TEST_RESOURCES_PREFIX.length());										
+							}
+							return path + " " + marker.getLine() + ":" + marker.getColumn();
 						}
 						
 					};
