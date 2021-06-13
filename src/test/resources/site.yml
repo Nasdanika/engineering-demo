@@ -2,7 +2,7 @@ app-action:
    children:
       - app-action:
          text: Documentation
-         location: ../engineering/index.html
+         location: https://docs.nasdanika.org/engineering/index.html
          icon: fab fa-book
          role: context
       - app-action:
