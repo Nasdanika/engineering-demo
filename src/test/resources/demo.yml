@@ -1,6 +1,16 @@
 engineering-organization:
    name: Nasdanika Engineering Demo
    path: demo   
+   appearance:
+     features:
+       issue-statuses:
+         roles: element-actions/context
+       resources:
+         roles:
+         - feature-actions/context
+         - element-actions/none
+   resources:
+     - resources/user-guide/root.yml
    discussion:
      - name: New and noteworthy
        path: new
@@ -25,10 +35,6 @@ engineering-organization:
            markdown-description: So, when?
            author: demo:engineers/pv
            date: 2021/6/11            
-   appearance:
-     features:
-       issue-statuses:
-         roles: element-actions/context                       
    issue-categories:
       - path: test
         name: Test Category
