@@ -1,9 +1,0 @@
-model-elements:
-  engineered-element:
-    roles: content-right
-    features:
-      discussion:
-        icon: fas fa-car
-        category: true
-        roles: feature-actions/content-left
-      

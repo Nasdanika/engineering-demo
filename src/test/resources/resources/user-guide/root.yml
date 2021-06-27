@@ -1,5 +1,0 @@
-engineering-document:
-  name: User Guide
-  path: user-guide
-  content:
-    exec-resource: content.md

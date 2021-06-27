@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script><title>Nasdanika Engineering Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script><title>Increments</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.11/themes/default/style.min.css"/>
@@ -59,12 +59,12 @@
       <div class="row">
         <div class="nsd-app-navbar bg-light text-dark col">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a data-nsd-action="48efbca4fb6e69eebbd2a092af82889abb8ac57d58d6cbe07bcfcb49e9c47e92" href="" class="nsd-action navbar-brand">
+            <a data-nsd-action="48efbca4fb6e69eebbd2a092af82889abb8ac57d58d6cbe07bcfcb49e9c47e92" href="../../index.html" class="nsd-action navbar-brand">
               <span class="far fa-building nsd-label-icon"></span>Nasdanika Engineering Demo</a>
-            <button type="button" data-toggle="collapse" data-target="#nsd-2" class="navbar-toggler">
+            <button type="button" data-toggle="collapse" data-target="#nsd-9" class="navbar-toggler">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="nsd-2" class="collapse navbar-collapse">
+            <div id="nsd-9" class="collapse navbar-collapse">
               <ul class="navbar-nav"></ul>
             </div>
           </nav>
@@ -76,35 +76,33 @@
             <div class="card-header">
               <span class="fas fa-users nsd-label-icon"></span>Engineers</div>
             <div class="list-group list-group-flush">
-              <a href="e-reference/engineers/joe-doe/index.html" class="list-group-item list-group-action">
+              <a href="../engineers/joe-doe/index.html" class="list-group-item list-group-action">
                 <span class="fas fa-user nsd-label-icon"></span>Joe Doe</a>
             </div>
           </div>
         </div>
         <div class="nsd-app-content-panel border-left col">
           <div class="container-fluid">
-            <div class="row nsd-app-content-panel-body-row">
-              <div class="col nsd-app-content-panel-body">
-                <table style="width:auto" class="table table-bordered">
-                  <tr>
-                    <th>Location</th>
-                    <td>
-                      <a href="https://github.com/Nasdanika/engineering-demo/blob/main/src/test/resources/demo.yml#L1">src/test/resources/demo.yml 1:1</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      <span>Rate</span>
-                    </th>
-                    <td>1.0</td>
-                  </tr>
-                  <tr>
-                    <th>
-                      <span>Uri</span>
-                    </th>
-                    <td>demo:this</td>
-                  </tr>
-                </table>
+            <div class="row">
+              <div class="col nsd-app-content-panel-breadcrumb">
+                <nav aria-label="breadcrumb" class="mt-1">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a data-nsd-action="48efbca4fb6e69eebbd2a092af82889abb8ac57d58d6cbe07bcfcb49e9c47e92" href="../../index.html" class="nsd-action">
+                        <span class="far fa-building nsd-label-icon"></span>Nasdanika Engineering Demo</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                      <span class="nsd-action">
+                        <span class="far fa-calendar-alt nsd-label-icon"></span>Increments</span>
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col nsd-app-content-panel-header-col">
+                <h2 class="nsd-action nsd-app-content-panel-header">
+                  <span class="far fa-calendar-alt nsd-label-icon"></span>Increments</h2>
               </div>
             </div>
           </div>
@@ -116,7 +114,7 @@
             <span class="fab fa-book nsd-label-icon"></span>Documentation</a>&nbsp;&bull;&nbsp;
           <a href="https://github.com/Nasdanika/engineering-demo" class="nsd-action nsd-footer-action">
             <span class="fab fa-github nsd-label-icon"></span>Sources</a>&nbsp;&bull;&nbsp;
-          <a href="contributor-guide.html" class="nsd-action nsd-footer-action">
+          <a href="../../contributor-guide.html" class="nsd-action nsd-footer-action">
             <span class="fas fa-code-branch nsd-label-icon"></span>Contribute</a></div>
       </div>
     </div>
