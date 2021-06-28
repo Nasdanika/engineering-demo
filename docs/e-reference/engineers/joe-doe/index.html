@@ -61,10 +61,10 @@
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a data-nsd-action="48efbca4fb6e69eebbd2a092af82889abb8ac57d58d6cbe07bcfcb49e9c47e92" href="../../../index.html" class="nsd-action navbar-brand">
               <span class="far fa-building nsd-label-icon"></span>Nasdanika Engineering Demo</a>
-            <button type="button" data-toggle="collapse" data-target="#nsd-5" class="navbar-toggler">
+            <button type="button" data-toggle="collapse" data-target="#nsd-3" class="navbar-toggler">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="nsd-5" class="collapse navbar-collapse">
+            <div id="nsd-3" class="collapse navbar-collapse">
               <ul class="navbar-nav"></ul>
             </div>
           </nav>
@@ -98,7 +98,8 @@
             <div class="row">
               <div class="col nsd-app-content-panel-header-col">
                 <h2 data-nsd-action="f1c71e072c6e23c92ac03447f344c0fe1450d84f83199c4663cf20e2c7289659" class="nsd-action nsd-app-content-panel-header">
-                  <span class="fas fa-user nsd-label-icon"></span>Joe Doe</h2>
+                  <span class="fas fa-user nsd-label-icon"></span>Joe Doe
+                  <sup data-toggle="modal" data-target="#nsd-4" style="cursor:pointer" class="far fa-question-circle"/></h2>
               </div>
             </div>
             <div class="row nsd-app-content-panel-body-row">
@@ -146,6 +147,30 @@
             <span class="fab fa-github nsd-label-icon"></span>Sources</a>&nbsp;&bull;&nbsp;
           <a href="../../../contributor-guide.html" class="nsd-action nsd-footer-action">
             <span class="fas fa-code-branch nsd-label-icon"></span>Contribute</a></div>
+      </div>
+    </div>
+    <div tabindex="-1" id="nsd-4" class="modal">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary">
+            <h5>
+              <span style="margin-right:0.3em" class="far fa-question-circle"></span>Joe Doe</h5>
+            <button data-dismiss="modal" class="close">x</button>
+          </div>
+          <div class="modal-body"><p><a href="https://docs.nasdanika.org/engineering/engineering/Engineer.html">Engineers</a> are entities, people or <a href="https://docs.nasdanika.org/engineering/engineering/Organization.html">organizations</a>, owning <a href="https://docs.nasdanika.org/engineering/engineering/EngineeredElement.html">engineered elements</a> and working on <a href="https://docs.nasdanika.org/engineering/engineering/Endeavors.html">endeavors</a>, e.g. <a href="https://docs.nasdanika.org/engineering/engineering/Issue.html">issues</a>.</p>
+<p>Engineer extends <a href="https://docs.nasdanika.org/engineering/engineering/Persona.html">Persona</a> and as such can have <a href="https://docs.nasdanika.org/engineering/engineering/Goal.html">goals</a>. Because Persona extends <a href="https://docs.nasdanika.org/engineering/engineering/EngineeredElement.html">Engineered Element</a> it may have issues associated with it.</p>
+<p>When applied to an Engineers it may be development issues, e.g. training. Say, Joe Doe may have an issue &ldquo;Team lead training&rdquo; assigned to Jim Smith, his supervisor. What it means that Jim trains Joe and it is tracked in the same way as tracking of <a href="Product.html">product</a> development, i.e. you can develop (engineer) your organization in the same way you develop (engineer) products and services offered by your organization.</p>
+<p>Engineers may have <a href="https://docs.nasdanika.org/engineering/engineering/Capacity.html">capacity</a> to work on endeavors and that capacity can be <a href="https://docs.nasdanika.org/engineering/engineering/Allocation.html">allocated</a> to <a href="https://docs.nasdanika.org/engineering/engineering/EngineeredElement.html">engineered elements</a> and <a href="https://docs.nasdanika.org/engineering/engineering/IssueCategory.html">issue categories</a>.</p>
+<p>In addition to owning engineered elements, engineers may have expertise in them. Ownership primarily means authority to make decisions about the owned elements. Expertise means knowledge of how to use them. Usually ownership assumes expertise, although the owner may consult the experts and then make decisions base on their inputs. Owners and experts form a community for an engineered element.</p>
+<p>Engineer may define <a href="https://docs.nasdanika.org/engineering/engineering/Increment.html">increments</a>, <a href="https://docs.nasdanika.org/engineering/engineering/IssueCategory.html">issue categories</a>, and <a href="https://docs.nasdanika.org/engineering/engineering/IssueStatus.html">issue statuses</a>. Typically it would be done at the top-level organization.</p>
+<p>Engineer may define personas and represent them. E.g. in an organization there might be a &ldquo;Developer&rdquo; persona defined at the &ldquo;Developer Experience&rdquo; organization and represented by developers. This allows to define personal goals by interviewing the representatives and then align organizaiton&rsquo;s endeavors to the persona goals.</p>
+<p>Engineers may also have <a href="https://docs.nasdanika.org/engineering/engineering/Objective.html">objectives</a> associated with endeavors, e.g. <a href="https://docs.nasdanika.org/engineering/engineering/Increment.html">increments</a>. E.g. &ldquo;Developer&rdquo; persona may have a goal &ldquo;Automate routine tasks&rdquo; and there might be an annual objective &ldquo;Create code generators&rdquo; aligned to that goal. Then, subsequently, a <a href="https://docs.nasdanika.org/engineering/engineering/Feature.html">feature</a> &ldquo;Cloud microservice code generator&rdquo; can be aligned to the &ldquo;Create code generators&rdquo; objective or its <a href="https://docs.nasdanika.org/engineering/engineering/KeyResult.html">key result</a>, say &ldquo;5 code generators for the cloud&rdquo;.</p>
+<p>Engineers may contain <a href="https://docs.nasdanika.org/engineering/engineering/Module.html">modules</a>. E.g. a team may contain libraries developed by the team and then ownership of these libraries may be assigned to team members.</p>
+<p>Engineers may also provide services - shared <a href="https://docs.nasdanika.org/engineering/engineering/Activity.html">activities</a> used by other engineers or personas. For example, a performance testing team may provide a testing service used by development teams to performance test modules they own.</p>
+<p>Services may be defined as <a href="https://docs.nasdanika.org/engineering/engineering/Journey.html">journeys</a> leveraging services provided by other engineers. For example, the performance team&rsquo;s service &ldquo;Performance test an application&rdquo; may use a service &ldquo;Provision cloud environment&rdquo; provided by the cloud infrastructure team.</p>
+<p>And, finally, engineers may post <a href="https://docs.nasdanika.org/engineering/engineering/Message.html">messages</a> to <a href="https://docs.nasdanika.org/engineering/engineering/Topic.html">topics</a> of <a href="https://docs.nasdanika.org/engineering/engineering/Forum.html">discussion forums</a>.</p>
+</div>
+        </div>
       </div>
     </div>
   </body>

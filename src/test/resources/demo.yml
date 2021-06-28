@@ -4,4 +4,5 @@ engineering-organization:
    engineers:
      - engineering-engineer:
          name: Joe Doe     
-         path: joe-doe                                         
+         path: joe-doe
+                                         

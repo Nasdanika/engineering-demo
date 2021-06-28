@@ -27,6 +27,7 @@ import org.nasdanika.engineering.gen.GenerateSiteConsumerFactory;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.factories.BootstrapContainerApplicationSupplierFactory;
 import org.nasdanika.html.app.factories.ComposedLoader;
+import org.nasdanika.html.emf.SimpleEObjectViewAction;
 import org.nasdanika.html.model.app.AppPackage;
 
 /**
@@ -82,6 +83,7 @@ public class TestModel {
 		CommandFactory commandFactory = asf.then(consumerFactory); 
 		MutableContext context = Context.EMPTY_CONTEXT.fork();
 		context.put(Context.BASE_URI_PROPERTY, "random://" + UUID.randomUUID() + "/" + UUID.randomUUID() + "/");
+		context.put(SimpleEObjectViewAction.DOC_URI, "https://docs.nasdanika.org/engineering/engineering/");
 		context.register(Date.class, new Date());
 
 		URI uri = URI.createFileURI(new File(".").getCanonicalPath());
