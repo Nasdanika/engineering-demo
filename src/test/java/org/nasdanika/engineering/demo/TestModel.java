@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.UUID;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
+import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 import org.junit.Test;
 import org.nasdanika.common.CommandFactory;
 import org.nasdanika.common.Context;
@@ -31,22 +34,30 @@ import org.nasdanika.html.emf.SimpleEObjectViewAction;
 import org.nasdanika.html.model.app.AppPackage;
 
 /**
- * Tests of descriptor view parts and wizards.
+ * Generates Nasdanika Engineering Demo site.
  * @author Pavel
  *
  */
 public class TestModel {
 	
+	/**
+	 * For resolving resource locations to their source locations on GitHub.
+	 */
 	private static final String TEST_RESOURCES_PREFIX = "engineering-demo/target/test-classes/";
 	
 	@Test
 	public void testGenerateDemoSite() throws Exception {
+		// This loader is needed to load the application template (dark-fluid.yml) and the site template (site.yml).
 		ObjectLoader loader = new EObjectLoader(new ComposedLoader(), null, AppPackage.eINSTANCE);
 		
+		// Outputs to console, send to file if desired.
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		
+		// Application template
 		String resourceName = "org/nasdanika/html/app/templates/cerulean/dark-fluid.yml";
 		BootstrapContainerApplicationSupplierFactory applicationSupplierFactory = (BootstrapContainerApplicationSupplierFactory) loader.loadYaml(getClass().getClassLoader().getResource(resourceName), progressMonitor);
 		
+		// Loading the model from demo.yml resource which references other resources.
 		URI modelURI = URI.createURI(getClass().getResource("/demo.yml").toString());
 		GenerateSiteConsumerFactory consumerFactory = new GenerateSiteConsumerFactory(
 				Collections.singleton(modelURI), 
@@ -70,6 +81,28 @@ public class TestModel {
 				return ret;
 			}
 			
+//			/**
+//			 * Demonstrates how to load resources with a custom protocol/scheme.
+//			 * Similarly, custom loading can be registered for an extension.
+//			 */
+//			@Override
+//			protected Registry createResourceFactoryRegistry(ObjectLoader loader, Context context, ProgressMonitor progressMonitor) {
+//				Registry registry = super.createResourceFactoryRegistry(loader, context, progressMonitor);
+//				registry.getProtocolToFactoryMap().put("test", new ResourceFactoryImpl() {
+//					
+//					@Override
+//					public Resource createResource(URI uri) {
+//						// TODO - Implement custom loading here or create a custom resource factory class.
+//						return super.createResource(uri);
+//					}
+//					
+//				});
+//				return registry;
+//			}
+			
+//			/**
+//			 * Appearance customization
+//			 */
 //			@Override
 //			protected List<URL> getAppearanceLocations() {
 //				return Collections.singletonList(getClass().getResource("/appearance.yml"));
@@ -81,11 +114,14 @@ public class TestModel {
 		SupplierFactory<Action> asf = Util.<Action>asSupplierFactory(actionFactory);		
 		
 		CommandFactory commandFactory = asf.then(consumerFactory); 
+		
+		// Creating a context. Put more interpolation tokens as needed
 		MutableContext context = Context.EMPTY_CONTEXT.fork();
 		context.put(Context.BASE_URI_PROPERTY, "random://" + UUID.randomUUID() + "/" + UUID.randomUUID() + "/");
 		context.put(SimpleEObjectViewAction.DOC_URI, "https://docs.nasdanika.org/engineering/engineering/");
 		context.register(Date.class, new Date());
 
+		// Resolver of resource URI to source location for creation of location links in properties tables.
 		URI uri = URI.createFileURI(new File(".").getCanonicalPath());
 		SourceResolver sourceResolver = marker -> {
 			if (marker != null && !Util.isBlank(marker.getLocation())) { 
@@ -124,6 +160,7 @@ public class TestModel {
 		
 		context.register(SourceResolver.class, sourceResolver);
 		
+		// Diagnosing loaded resources. 
 		try {
 			Diagnostic diagnostic = Util.call(commandFactory.create(context), progressMonitor);
 			if (diagnostic.getStatus() == Status.WARNING || diagnostic.getStatus() == Status.ERROR) {
